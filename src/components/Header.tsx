@@ -1,9 +1,11 @@
+import { mediaQueries } from 'constants/mediaQueries'
 import React from 'react'
 import Logo from 'media/Logo.png'
 import styled from 'styled-components'
 import { CONTAINER } from '../constants/const'
 import Button from './ui/Button'
 import DesktopMenu from './Menu/DesktopMenu'
+import MobileMenu from './Menu/MobileMenu'
 
 const Wrapper = styled('div')`
   background: ${({ theme }) => theme.background.primary};
@@ -16,7 +18,7 @@ const HeaderBlock = styled('header')`
   justify-content: space-between;
   margin: 0 auto;
   max-width: ${CONTAINER}px;
-  padding: 22px 39px 26px 39px;
+  padding: ${({ theme }) => `22px ${theme.layoutPadding.XPadding} 26px ${theme.layoutPadding.XPadding}`} ;
   background: ${({ theme }) => theme.background.primary};
 `
 
@@ -44,6 +46,9 @@ const LogoText = styled('div')`
 const Connection = styled('div')`
   display: flex;
   align-items: center;
+  @media ${mediaQueries.laptopS} {
+    display: none;
+  }
 `
 
 const ConnectionTexts = styled('div')`
@@ -58,6 +63,12 @@ const TelNumber = styled('span')`
 const Hour = styled('span')`
   font-weight: 600;
   font-size: ${({ theme }) => theme.fontSize.micro};
+`
+
+const ButtonWrapper = styled('div')`
+  @media ${mediaQueries.laptopS} {
+    display: none;
+  }
 `
 
 const Header = () => {
@@ -83,7 +94,10 @@ const Header = () => {
             </ConnectionTexts>
             <Button themeType={'warning'}>Бесплатная консультация </Button>
           </Connection>
-          <Button themeType={'lighten'}>Мой заказ</Button>
+          <ButtonWrapper>
+            <Button themeType={'lighten'}>Мой заказ</Button>
+          </ButtonWrapper>
+          <MobileMenu />
         </HeaderBlock>
       </WithBorder>
       <DesktopMenu />

@@ -59,7 +59,7 @@ const data = [
   }
 ]
 const QuestionsGrid = styled('div')`
-  margin-top: 41px;
+  margin-top: 3.5vw;
   display: grid;
   grid-gap: 26px;
 `
@@ -74,6 +74,9 @@ const BlockAnswer = styled('div')`
   display: grid;
   grid-gap: 26px;
   grid-template: 1fr / 1fr 1fr;
+  @media ${mediaQueries.tabletL} {
+    grid-template: 1fr min-content / 1fr;
+  }
 `
 
 const Answers = styled('div')`
@@ -121,7 +124,7 @@ const Answer = styled('div')<withActive>`
 `
 
 const WithBorder = styled('div')`
-  padding: 3vw 3.2vw;
+  padding: 41px 3.2vw;
   height: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.border.primary};
   border-left: 1px solid ${({ theme }) => theme.border.primary};

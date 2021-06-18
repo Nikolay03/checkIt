@@ -1,13 +1,15 @@
 import menus from 'constants/menus'
 import { mediaQueries } from 'constants/mediaQueries'
 import { LAYOUT_PADDING } from 'constants/const'
-import React, { ReactElement } from 'react'
+import React, { FC, ReactElement } from 'react'
 import styled from 'styled-components'
 import { prop } from 'ramda'
 import { MenuBar, RightArrowAlt } from 'media/icons'
 import { MenusInterface, WithOpen } from 'types'
 import { Link } from 'react-router-dom'
 import { ReactDefaultTypes } from 'types/svgImages'
+import hexToRgba from 'utils/hexToRgba'
+import Button from '../ui/Button'
 
 const transition = 'all 200ms ease-out'
 
@@ -16,14 +18,13 @@ const Wrapper = styled('div')`
   position: relative;
   margin-left: auto;
   display: none;
-  @media ${mediaQueries.laptopM} {
+  @media ${mediaQueries.laptopS} {
     display: block;
   }
 `
 
 const IconTrigger = styled('div')`
   cursor: pointer;
-  height: 91px;
   display: flex;
   align-items: center;
   padding-left: 4vw;
@@ -39,14 +40,8 @@ const IconTrigger = styled('div')`
     }
   }
   @media ${mediaQueries.minLaptopM} {
-    margin-left: -47px;
-    padding-left: 47px;
   }
   @media ${mediaQueries.laptopM} {
-    padding-left: 4vw;
-    margin-left: -4vw;
-    margin-right: -15px;
-    padding-right: 4vw;
   }
   @media ${mediaQueries.tabletS} {
     height: ${LAYOUT_PADDING}px;
@@ -100,7 +95,7 @@ const MenuContent = styled('div')<WithOpen>`
 `
 
 const ElonMusk = styled('div')<WithOpen>`
-  background-color: white;
+  background-color: ${hexToRgba('#000000', 0.18)};
   position: fixed;
   top: 0;
   left: 0;
@@ -114,29 +109,13 @@ const ElonMusk = styled('div')<WithOpen>`
 
 const MenuList = styled('nav')`
   flex-grow: 1;
-  padding: 0px 10px 60px 40px;
+  padding: 0px 10px 40px 40px;
   & button {
     margin-top: 15px;
   }
 `
 
-const AuthButton = styled('div')`
-  padding-left: 43px;
-  display: flex;
-  align-items: center;
-  & span {
-    margin-top: 5px;
-    font-weight: 500;
-  }
-  & svg {
-    margin-right: 11px;
-    font-size: 22px;
-  }
-`
-
-const Profile = styled(AuthButton)``
-
-const MenuItem = styled('a')`
+const MenuItem = styled('div')`
   color: ${props => props.theme.color.primary};
   line-height: 20px;
   padding: 15px 0px;
@@ -154,36 +133,38 @@ const MenuItem = styled('a')`
   }
 `
 
-const Languages = styled('div')`
-  padding: 0px 30px 80px 40px;
-  display: flex;
-  & > :not(:last-child) {
-    margin-right: 18px;
-  }
-`
 const ContentMenu = styled('div')`
   overflow-y: auto;
   min-height: calc(100% - 91px);
   display: flex;
   flex-direction: column;
 `
-const LanguageButton = styled('div')`
-  cursor: pointer;
-  user-select: none;
-  border-bottom: 1px solid transparent;
-  &.active {
-    color: ${({ theme }) => theme.color.warning};
-    border-bottom: 1px solid transparent !important;
-  }
-  &:hover {
-    border-bottom: 1px solid ${({ theme }) => theme.color.primary};
-  }
+
+const ButtonWrapper = styled('div')``
+
+const Connection = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60px;
 `
 
-const MobileMenu = (): ReactElement => {
-  // handlers
+const ConnectionTexts = styled('div')`
+  text-align: center;
+  margin-bottom: 10px;
+`
+const TelNumber = styled('span')`
+  font-size: ${({ theme }) => theme.fontSize.primary};
+  font-weight: 600;
+  margin-right: 7px;
+`
+const Hour = styled('span')`
+  font-weight: 600;
+  font-size: ${({ theme }) => theme.fontSize.micro};
+`
+
+const MobileMenu: FC = ({ }) => {
   const [menuIsOpen, setMenuIsOpen] = React.useState(false)
-  const [isUser, setIsUser] = React.useState(false)
   const onMenuOpen = (): void => setMenuIsOpen(true)
   const onMenuClose = (): void => setMenuIsOpen(false)
   React.useEffect(() => {
@@ -213,19 +194,26 @@ const MobileMenu = (): ReactElement => {
             {menus.map((item: MenusInterface, index) => {
               const url = prop('url', item)
               const label = prop('label', item)
-              const isAuth = prop('isAuth', item)
-              const withoutAuthorization = isAuth && isUser
-              const subI = (
-                <Link to={url} key={index} >
+              return (
+                <Link to={url} key={index}>
                   <MenuItem>
                     <span>{label}</span>
                   </MenuItem>
                 </Link>
               )
-              return withoutAuthorization ? null : subI
             })}
-
           </MenuList>
+          <Connection>
+            <ConnectionTexts>
+              <TelNumber>
+                8 800 809 890 908
+              </TelNumber>
+              <Hour>
+                До 21:00
+              </Hour>
+            </ConnectionTexts>
+            <Button themeType={'warning'}>Бесплатная консультация </Button>
+          </Connection>
         </ContentMenu>
       </MenuContent>
     </Wrapper>

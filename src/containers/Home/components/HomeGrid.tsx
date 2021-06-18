@@ -11,7 +11,7 @@ const StyledContainer = styled(Container)`
 `
 
 const Wrapper = styled('div')`
-  padding: 39px 0px;
+  padding: ${props => props.theme.layoutPadding.XPadding} 0px;
 `
 
 const HomeGrid = () => {

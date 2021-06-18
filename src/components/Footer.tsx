@@ -1,6 +1,6 @@
 import * as ROUTES from 'constants/routes'
 import { mediaQueries } from 'constants/mediaQueries'
-import menus from 'constants/menus'
+import { desktopMenu } from 'constants/menus'
 import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 import { prop } from 'ramda'
@@ -29,7 +29,9 @@ const ContainerStyled = styled(Container)`
 
 const Contacts = styled('div')`
   padding: 44px 0px 15px 0px;
-  @media ${mediaQueries.tabletL} {
+  @media ${mediaQueries.laptopS} {
+    grid-column-end: 3;
+    grid-column-start: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 30px 0px 24px 0px;
@@ -46,13 +48,12 @@ const Date = styled('div')`
 const Menu = styled('div')`
   padding: 44px 0px 15px 54px;
   display: grid;
-  grid-template-columns: 4fr 1fr;
   position: relative;
-  @media ${mediaQueries.tabletL} {
-    grid-template-columns: 1fr;
+  @media ${mediaQueries.laptopS} {
+    grid-column-end: 3;
     grid-column-start: 1;
-    grid-column-end: 1;
     padding: 24px 0px 24px 0px;
+    border-bottom: 1px solid;
   }
 `
 const MenuList = styled('div')`
@@ -73,10 +74,15 @@ const MenuList = styled('div')`
     height: 100%;
     bottom: 0px;
   }
-  @media ${mediaQueries.tabletL} {
-    grid-template-columns: 1fr 1fr;
+  @media ${mediaQueries.laptopS} {
+    width: 100%;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    :after {
+      content: none;
+    }
   }
-  @media ${mediaQueries.tabletS} {
+  @media ${mediaQueries.laptopS} {
     grid-template-columns: auto auto;
   }
 `
@@ -93,7 +99,7 @@ const MenuItem = styled('div')`
 
 const Numbers = styled('div')`
   margin: 20px 0px;
-  @media ${mediaQueries.tabletL} {
+  @media ${mediaQueries.laptopS} {
     margin-top: 3px;
   }
 `
@@ -110,10 +116,19 @@ const Social = styled('div')`
   padding: 44px 0px 15px 54px;
   font-weight: 500;
   display: flex;
+  @media ${mediaQueries.laptopS} {
+    padding: 24px 0px 24px 0px;
+  }
 `
 
 const SocialPositions = styled('div')`
   margin: 0 0 0 auto;
+  @media ${mediaQueries.laptopS} {
+    width: 100%;
+    display: grid;
+    grid-template: min-content min-content/ 1fr 1fr;
+    margin: 0
+}
 `
 
 const Logos = styled('div')`
@@ -122,6 +137,17 @@ const Logos = styled('div')`
   display: grid;
   grid-template: 1fr / 25px 25px;
   grid-gap: 15px;
+  @media ${mediaQueries.laptopS} {
+    grid-row-start: 2;
+  }
+`
+
+const TextFieldPositions = styled('div')`
+  @media ${mediaQueries.mobileXL} {
+    grid-row-start: 3;
+    grid-column-end: 3;
+    grid-column-start: 1;
+  }
 `
 
 const WeCreate = styled('div')`
@@ -130,6 +156,15 @@ const WeCreate = styled('div')`
   align-items: center;
   & p {
     margin-right: 10px;
+  }
+  @media ${mediaQueries.laptopS} {
+    margin-top: 0px;
+  }
+  @media ${mediaQueries.mobileXL} {
+    margin-top: 15px;
+    grid-row-end: 5;
+    grid-column-end: 3;
+    grid-column-start: 1;
   }
 `
 
@@ -150,7 +185,7 @@ const Footer = (): ReactElement => {
         </Contacts>
         <Menu>
           <MenuList>
-            {menus.map((item: MenusInterface, index) => {
+            {desktopMenu.map((item: MenusInterface, index) => {
               const url = prop('url', item)
               const label = prop('label', item)
               return (
@@ -170,7 +205,9 @@ const Footer = (): ReactElement => {
               <a href="http://kuda.to"><img src={Facebook} alt={'Facebook'}/></a>
               <a href="http://kuda.to"><img src={Vk} alt={'Vk'}/></a>
             </Logos>
-            <TextField size={'small'} name={'search'} prefix={<SearchIcon />} placeholder={'Поиск по сайту'} />
+            <TextFieldPositions>
+              <TextField size={'small'} name={'search'} prefix={<SearchIcon />} placeholder={'Поиск по сайту'} />
+            </TextFieldPositions>
             <WeCreate>
               <p>Сделано в студии</p>
               <img src={Peach} alt={'Peach'}/>

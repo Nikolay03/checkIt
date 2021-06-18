@@ -62,11 +62,6 @@ const themes = (breakpoints: WindowSizes) => {
       grey: '#8C929D',
       tags: '#5e5e5e',
       placeholder: '#9098A7',
-      modal: '#bdbdbd',
-      menuItemActive: '#fff',
-      button: '#f7f7f7',
-      hashTags: mainColor,
-      label: '#8c929d'
     },
     borderRadius: {
       primary: '2px',
@@ -75,36 +70,18 @@ const themes = (breakpoints: WindowSizes) => {
       button: '20px'
     },
     fontSize: {
-      primary: laptopM ? '14px' : '20px',
+      primary: laptopM ? '18px' : '20px',
       large: tabletL ? '34px' : laptopM ? '4.3vw' : '43px',
       big: tabletL ? '23px' : laptopM ? '3.7vw' : '34px',
-      capital: tabletL ? '16px' : laptopM ? '23px' : '20px',
-      medium: tabletL ? '23px' : laptopM ? '26px' : '18px',
-      standart: tabletL ? '23px' : laptopM ? '26px' : '16px',
+      capital: tabletL ? '16px' : laptopM ? '18px' : '20px',
+      medium: tabletL ? '16px' : laptopM ? '18px' : '18px',
+      standart: tabletL ? '14px' : laptopM ? '14px' : '16px',
       small: laptopM ? '14px' : '14px',
       micro: '12px'
     },
     border: {
       primary: '#e8edf1',
       button: '#F5D307',
-    },
-    boxShadow: {
-      primary: '0 1px 5px -1px rgba(157, 157, 157, 0.25)',
-      nav: '0 0 5px rgba(193, 193, 193, 0.25)',
-      tags: '0 0 4px -2px #c0c0c0',
-      modal: '0 1px 10px rgba(157, 157, 157, 0.25)',
-      field: 'inset 0 1px 7px #e3e3e3, inset -1px -1px 5px #fff'
-    },
-    width: {
-      wrap: '1200px',
-      wrapCenter: '393px',
-      contentMain: 'calc(100% - 285px)',
-      contentPost: '768px',
-      aside: '260px',
-      field: '300px'
-    },
-    height: {
-      nav: '55px'
     },
     scrollbar: {
       thumb: '#DEDEDE'
@@ -113,6 +90,9 @@ const themes = (breakpoints: WindowSizes) => {
       fast: '.1s ease-in-out',
       medium: '.2s ease-in-out',
       long: '.3s ease-in-out'
+    },
+    layoutPadding: {
+      XPadding: tabletL ? '15px' : laptopM ? '28px' : '39px',
     }
   }
 }

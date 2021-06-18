@@ -8,24 +8,12 @@ interface Button {
   background?: string
   styles?: any
   size?: string
-  themeType?: 'primary' | 'secondary' | 'lighten' | 'warning' | 'delete'
+  themeType?: 'lighten' | 'warning'
   color?: string
 }
 
 const typeSizes = (size, theme) => {
   switch (size) {
-  case 'medium':
-    return {
-      padding: '13px 29px'
-    }
-  case 'big':
-    return {
-      padding: '20px 20px',
-    }
-  case 'large':
-    return {
-      padding: '10px'
-    }
   default:
     return {
       padding: '15px 26px',
@@ -38,12 +26,6 @@ const typeSizes = (size, theme) => {
 
 const typeStyles = (themeType, theme) => {
   switch (themeType) {
-  case 'primary':
-    return {
-      color: theme.color.button,
-      background: theme.background.button
-    }
-    //
   case 'lighten':
     return {
       color: '#01a5da',
@@ -52,23 +34,12 @@ const typeStyles = (themeType, theme) => {
       border: `1px solid ${theme.border.primary}`,
       background: 'transparent'
     }
-  case 'secondary':
-    return {
-      color: theme.color.secondary,
-      background: theme.background.secondary,
-      opacity: 0.08
-    }
     //
   case 'warning':
     return {
       color: theme.color.primary,
       border: `1px solid ${theme.border.button}`,
       background: theme.background.warning
-    }
-  case 'delete':
-    return {
-      color: theme.color.white,
-      background: theme.palette.red
     }
   default:
     return {
@@ -107,7 +78,7 @@ interface ButtonInterface {
   styles?: any
   loading?: boolean
   type?: 'submit' | 'button'
-  themeType?: 'primary' | 'secondary' | 'lighten' | 'warning' | 'delete'
+  themeType?: 'lighten' | 'warning'
   size?: 'small' | 'medium' | 'big' | 'large'
   width?: string
   disabled?: boolean

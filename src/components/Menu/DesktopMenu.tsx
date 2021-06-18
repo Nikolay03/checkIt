@@ -10,21 +10,13 @@ import { Link } from 'react-router-dom'
 const Wrapper = styled('div')`
   margin: 0 auto;
   max-width: ${CONTAINER}px;
-  padding: 20px 39px 20px 39px;
+  padding: ${({ theme }) => `20px ${theme.layoutPadding.XPadding} 20px ${theme.layoutPadding.XPadding}`};
   align-self: center;
   display: flex;
   position: relative;
-  @media ${mediaQueries.laptopM} {
+  @media ${mediaQueries.laptopS} {
     display: none;
   }
-`
-
-const Header = styled('div')`
-  height: 91px;
-  justify-content: space-between;
-  background-color: ${({ theme }) => theme.background.secondary};
-  min-height: 91px;
-  display: flex;
 `
 
 const MenuList = styled('nav')<{ length: number }>`
@@ -34,7 +26,7 @@ const MenuList = styled('nav')<{ length: number }>`
   grid-gap: 30px;
 `
 
-const MenuItem = styled('a')`
+const MenuItem = styled('div')`
   height: min-content;
   color: ${props => props.theme.color.primary};
   line-height: 20px;

@@ -2,6 +2,10 @@ import * as ROUTES from 'constants/routes'
 
 export default [
   {
+    label: 'Мой заказ',
+    url: ROUTES.ROOT_URL
+  },
+  {
     label: 'Проекты',
     url: ROUTES.ROOT_URL
   },
