@@ -2,7 +2,7 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nikolay03.github.io/checkIt/",
+  "homepage": "https://nikolay03.github.io/checkIt",
   "dependencies": {
     "axios": "^0.21.0",
     "final-form": "^4.20.0",
