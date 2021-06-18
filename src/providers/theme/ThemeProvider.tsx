@@ -1,6 +1,4 @@
 import theme from 'constants/themes'
-// @ts-ignore
-import { CubeThemeProvider } from 'ui-cubic'
 import React from 'react'
 import { ThemeProvider as Provider } from 'styled-components'
 import NormalizeCSS from 'themes/NormalizeCSS'

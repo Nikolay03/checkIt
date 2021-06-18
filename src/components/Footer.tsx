@@ -1,4 +1,3 @@
-import * as ROUTES from 'constants/routes'
 import { mediaQueries } from 'constants/mediaQueries'
 import { desktopMenu } from 'constants/menus'
 import React, { ReactElement } from 'react'
