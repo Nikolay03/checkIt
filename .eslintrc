@@ -1,0 +1,86 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "standard",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "babel",
+    "react",
+    "react-hooks",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "import/order": [2, {"groups": ["builtin", "external", "parent", "sibling", "index"]}],
+    "jsx-quotes": ["error", "prefer-double"],
+    "react/jsx-handler-names": "off",
+    "react/jsx-boolean-value": "off",
+    "import/newline-after-import": ["error"],
+    "import/no-unresolved": "off",
+    "indent": [2, 2],
+    "comma-dangle": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "no-use-before-define": "off",
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "off",
+    "@typescript-eslint/ban-types": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "no-empty-pattern": "off",
+    "typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "react/display-name": "off",
+    "import/no-named-default": "off",
+    "no-console": "warn"
+  },
+  "overrides": [
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["off", {
+          "allowExpressions": true
+        }]
+      }
+    }
+  ],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "__DEV__": false,
+    "__TEST__": false,
+    "__PROD__": false,
+    "__COVERAGE__": false,
+    "Cypress": false,
+    "cy": true,
+    "expect": true,
+    "describe": true,
+    "it": true,
+    "context": true,
+    "beforeEach": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    },
+    "import/resolver": "babel-plugin-root-import",
+    "linkComponents": [
+      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+      "Hyperlink",
+      {"name": "Link", "linkAttribute": "to"}
+    ]
+  }
+}
