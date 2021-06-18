@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 // Component
 const Routes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/checkIt">
       <>
         {routes.map((route, key) => (
           <MultiRouter key={key} {...route} />

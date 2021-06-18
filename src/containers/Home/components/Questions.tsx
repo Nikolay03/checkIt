@@ -102,7 +102,7 @@ const TextAll = styled('div')`
 `
 
 const All = styled('span')<withActive>`
-  width: 43px;
+  width: ${({ theme }) => theme.fontSize.large};
   font-size: ${({ theme }) => theme.fontSize.large};
   color: ${({ theme, isActive }) => isActive ? theme.color.warning : theme.color.primary};
 `
