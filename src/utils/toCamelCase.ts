@@ -1,4 +1,4 @@
-import * as CONST from 'constants/constants'
+import * as CONST from 'constants/const'
 import { compose, is, curry, keys, map, values, zipObj, path, equals } from 'ramda'
 
 // @ts-ignore

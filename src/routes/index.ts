@@ -1,17 +1,17 @@
 import * as ROUTES from 'constants/routes'
-import SignInContainer from 'containers/signIn/SignInContainer'
-import Layout from "../providers/layout/Layout";
+import Layout from 'providers/layout/Layout'
+import HomeContainer from 'containers/Home/HomeContainer'
 
 export default [
-  // Sign in
+  // Home
   {
     path: ROUTES.ROOT_URL,
     layout: Layout,
-    component: SignInContainer
+    component: HomeContainer
   },
   // {
   //   path: '*',
-  //   layout: LayoutProvider,
+  //   layout: NoLayout,
   //   component: userIsAuth(NotFoundContainer)
   // }
 ]

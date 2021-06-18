@@ -33,8 +33,11 @@ const themes = (breakpoints: WindowSizes) => {
       greyLight: '#e9e9e9'
     },
     background: {
-      primary: '#F6F6F6',
-      secondary: '#ECECED',
+      primary: '#FFFFFF',
+      dark: '#333333',
+      warning: '#FFE00E',
+      body: '#f3f3f3',
+      secondary: '#f9f9f9',
       hoverPrimary: '#ECECED',
       lighten: '#FCFCFC',
       bgMask: 'rgba(17, 22, 31, 0.76)',
@@ -43,20 +46,19 @@ const themes = (breakpoints: WindowSizes) => {
       blue: '#1C65B8',
       blueSky: '#1867c0',
       buttonPrimary: '#2E384C',
-      darkBlue: '#212938',
       skeleton: '#eee',
       button: mainColor
     },
     color: {
-      primary: '#2E384C',
-      secondary: '#5C5550',
+      primary: '#333333',
+      secondary: '#999999',
       lighten: '#A1A5AD',
       darkGrey: '#686F7E',
       background: '#F6F6F6',
       lightenSecondary: '#F6F6F6',
       lightenThird: '#F7F7F7',
       white: '#fff',
-      warning: '#E2A632',
+      warning: '#FFE00E',
       grey: '#8C929D',
       tags: '#5e5e5e',
       placeholder: '#9098A7',
@@ -73,26 +75,18 @@ const themes = (breakpoints: WindowSizes) => {
       button: '20px'
     },
     fontSize: {
-      primary: laptopM ? '14px' : '16px',
-      large: tabletL ? '34px' : laptopM ? '4.3vw' : '60px',
-      biggest: tabletL ? '27px' : laptopM ? '3.9vw' : '50px',
-      big: tabletL ? '23px' : laptopM ? '3.7vw' : '46px',
-      medium: tabletL ? '23px' : laptopM ? '26px' : '32px',
-      capital: tabletL ? '16px' : laptopM ? '23px' : '26px',
-      capitalMedium: laptopM ? '16px' : '20px',
-      small: laptopM ? '16px' : '18px',
-      smallest: '15px',
-      micro: '13px'
+      primary: laptopM ? '14px' : '20px',
+      large: tabletL ? '34px' : laptopM ? '4.3vw' : '43px',
+      big: tabletL ? '23px' : laptopM ? '3.7vw' : '34px',
+      capital: tabletL ? '16px' : laptopM ? '23px' : '20px',
+      medium: tabletL ? '23px' : laptopM ? '26px' : '18px',
+      standart: tabletL ? '23px' : laptopM ? '26px' : '16px',
+      small: laptopM ? '14px' : '14px',
+      micro: '12px'
     },
     border: {
-      primary: 'rgba(46, 56, 76, 0.26)',
-      button: '#2E384C',
-      secondary: '#E9EAEB',
-      grey: '#E6E7EA',
-      darkGrey: '#7B818E',
-      buttonActive: `1px solid ${mainColor}`,
-      field: '1px solid #e1e4e8',
-      fieldActive: `1px solid ${mainColor}`
+      primary: '#e8edf1',
+      button: '#F5D307',
     },
     boxShadow: {
       primary: '0 1px 5px -1px rgba(157, 157, 157, 0.25)',
@@ -114,10 +108,6 @@ const themes = (breakpoints: WindowSizes) => {
     },
     scrollbar: {
       thumb: '#DEDEDE'
-    },
-    table: {
-      backgroundColor: 'rgba(234, 236, 240, 0.72)',
-      border: 'none'
     },
     transition: {
       fast: '.1s ease-in-out',

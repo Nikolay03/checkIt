@@ -1,39 +1,23 @@
-export * from './settings'
-export * from './users'
-export * from './faq'
-export * from './news'
-export * from './events'
-export * from './feedback'
-export * from './request'
-export * from './hcp'
-export * from './transaction'
+import { ReactElement } from "react";
 
-export type TLanguages = {
-  id: number | string,
-  name: string
-}
-export type TIdName = {
-  id: number;
-  name: string;
+export interface MenusInterface {
+  label: string
+  isAuth?: boolean
+  url: string
 }
 
-export type TReportsItem = {
-  name: string,
-  id: number,
-  miniDescription: string,
-  description: string,
-  language: string,
-  category: string,
-  isFree: boolean,
-  price: number,
-  file: {
-    id: number,
+export interface WithOpen {
+  isOpen: boolean | number
+}
+
+export type BreadcrumbsTypes = {
+  way?: {
     url: string
-  },
-  previewFile: {
-    id: number,
-    url: string
-  },
-  worldType: string,
-  worlds: []
+    title: string
+  }[]
+  currentWay?: string
+  withBorder?: boolean
+  styles?: any
+  titleBlock?: string | ReactElement
+  style?: object
 }

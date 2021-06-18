@@ -3,12 +3,10 @@ import * as stateNames from 'constants/states'
 import { combineReducers } from 'redux'
 import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux'
 import { compose, forEach, toPairs } from 'ramda'
-import { TNewsItem } from 'types/models'
 import createThunkReducer from 'utils/createThunkReducer'
 import { AsyncReducers, TGetDataFromState } from 'types'
 
 export type RootState = {
-  orderList: TGetDataFromState<TNewsItem>;
   login: TGetDataFromState<any>;
   userInfo: any;
 }

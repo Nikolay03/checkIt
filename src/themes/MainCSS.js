@@ -14,8 +14,8 @@ export default createGlobalStyle`
     }
   }
   body{
-    font-family: Montserrat;
-    background: rgb(246, 246, 246);
+    font-family: PT Sans, sans-serif;
+    background: ${({ theme }) => theme.background.body};
     color: ${({ theme }) => theme.color.primary};
     font-size: 15px;
     line-height: 1.2;
