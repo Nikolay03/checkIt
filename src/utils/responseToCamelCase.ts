@@ -1,5 +1,5 @@
 import { equals, is, path } from 'ramda'
-import { toCamelCase } from './toCamelCase'
+import toCamelCase from './toCamelCase'
 
 const CONTENT_TYPE_JSON = 'application/json'
 

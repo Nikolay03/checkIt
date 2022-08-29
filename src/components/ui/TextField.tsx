@@ -31,12 +31,6 @@ const InputWrap = styled('div')<{ fullWidth?: boolean }>`
   position: relative;
   width: ${({ fullWidth }) => fullWidth && '100%'};
 `
-const Description = styled('p')`
-  margin-top: 12px;
-  font-size: 12px;
-  margin-left: 24px;
-  color: ${({ theme }) => theme.color.secondary};
-`
 const Sub = styled('span')`
   display: flex;
   justify-content: center;

@@ -9,7 +9,6 @@ const useWindowSize = (): WindowSizes => {
   })
 
   useEffect(() => {
-    // Handler to call on window resize
     function handleResize () {
       const width = window.innerWidth ? window.innerWidth : document.body.clientWidth
       setWindowSize({

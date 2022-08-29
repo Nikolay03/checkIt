@@ -1,8 +1,22 @@
-import { fromPairs, toPairs, map, compose } from 'ramda'
+import { is, map } from 'ramda'
+import { TObject } from 'types'
 
-export const toSnake = (str: string): any => {
-  return str.replace(/\./g, '__').replace(/([A-Z])/g, $1 => '_' + $1.toLowerCase())
+import caseMapKeys from './caseMapKeys'
+
+type TToSnakeCase = TObject[] | TObject | string
+
+const toSnake = str => str
+  .replace(/\./g, '__')
+  .replace(/([A-Z])/g, $1 => '_' + $1.toLowerCase())
+
+export default function toSnakeCase (data: TToSnakeCase): TToSnakeCase {
+  if (is(Array, data)) {
+    return map(toSnakeCase, data)
+  }
+
+  if (data instanceof Object) {
+    return map(toSnakeCase, caseMapKeys(toSnake, data))
+  }
+
+  return data
 }
-
-const firstIndexToSnakeCase = map(item => [[toSnake(item[0])], item[1]])
-export default compose(fromPairs, firstIndexToSnakeCase, toPairs)

@@ -1,42 +1,26 @@
-import * as CONST from 'constants/const'
-import { compose, is, curry, keys, map, values, zipObj, path, equals } from 'ramda'
+import { equals, map } from 'ramda'
+import { TObject } from 'types'
 
-// @ts-ignore
-const mapKeys = curry((fn, obj): any => zipObj(map(fn, keys(obj)), values(obj)))
+import caseMapKeys from './caseMapKeys'
 
-const camelize = (str: string): any => {
+type TToCamelCase = TObject[] | TObject | string
+
+const toCamel = (str: string) => {
   return str
     .replace(/_/g, ' ')
     .replace(/-/g, ' ')
-    .replace(/(?:^\w|[A-Z]|_|\b\w)/g, (letter, index) => {
-      return index === 0 ? letter.toLowerCase() : letter.toUpperCase()
-    })
+    .replace(/(?:^\w|[A-Z]|_|\b\w)/g, (letter, index) =>
+      equals(index, 0) ? letter.toLowerCase() : letter.toUpperCase())
     .replace(/\s+/g, '')
 }
 
-const invocableCompose: any = compose
-
-export const toCamelCase = (data: any | unknown): any => {
-  if (is(Array, data)) {
+export default function toCamelCase (data: TToCamelCase): TToCamelCase {
+  if (Array.isArray(data)) {
     return map(toCamelCase, data)
   }
 
-  if (is(Object, data)) {
-    return invocableCompose(map(toCamelCase), mapKeys(camelize))(data)
-  }
-
-  return data
-}
-
-export const responseToCamelCase = (data: unknown | any, response: unknown): any => {
-  const responseContentType = path(['content-type'], response)
-
-  if (equals(CONST.CONTENT_TYPE_JSON, responseContentType)) {
-    return toCamelCase(JSON.parse(data))
-  }
-
-  if (is(Object, data) || is(Array, data)) {
-    return toCamelCase(data)
+  if (data instanceof Object) {
+    return map(toCamelCase, caseMapKeys(toCamel, data))
   }
 
   return data

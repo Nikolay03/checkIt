@@ -13,8 +13,6 @@ interface BreadcrumbsWrap {
 
 interface LaptopBreadcrumbs {
   styles?: any
-  withBorder?: any
-  titleBlock?: any
 }
 const LaptopBreadcrumbs = styled('div')<LaptopBreadcrumbs>`
   padding-top: 15px;
@@ -99,11 +97,11 @@ type BreadcrumbsObject = {
   title: string
 }
 const Breadcrumbs: FC<BreadcrumbsTypes> = props => {
-  const { way = [], currentWay, titleBlock, style, styles, withBorder } = props
+  const { way = [], currentWay, titleBlock, style, styles } = props
   if (currentWay) {
     const isTitle = is(String, titleBlock)
     return (
-      <LaptopBreadcrumbs styles={styles} withBorder={withBorder} titleBlock={titleBlock}>
+      <LaptopBreadcrumbs styles={styles}>
         <BreadcrumbsWrap style={style}>
           {mapIndexed((item: BreadcrumbsObject, index) => {
             const url = prop('url', item)
